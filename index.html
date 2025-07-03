@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>main</title>
+    <title>sajo</title>
     <!-- Style Sheet -->
      <link rel="stylesheet" href="./reset.css">
      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"> -->
@@ -26,7 +26,6 @@
             <div class="container">
                 <!-- 좌측 로고 -->
                 <h1><a href=""><span class="blind">사조그룹</span></a></h1>
-
                 <!-- 데스크탑용 GNB -->
                 <nav id="gnb">
                     <ul class="dep1">
@@ -75,7 +74,6 @@
                         <li><a href="https://membership.sajo.co.kr/customer/online_name_verification1.asp?returnUrl=online_inconvenience.asp">고객센터</a></li>
                     </ul>
                 </nav>
-
                 <div class="header-right">
                     <!-- 우측 lang-wrap -->
                     <div class="lang-wrap">
@@ -85,13 +83,11 @@
                             <li><a href="#">ENG</a></li>
                         </ul>
                     </div>
-                    
                     <!-- 모바일용 햄버거 버튼 -->
                     <button class="gnb-toggle" aria-label="모바일 메뉴 열기">☰</button>
                 </div>
                 <!-- 오프캔버스 오버레이 -->
                 <div class="gnb-overlay"></div>
-                
                 <!-- 모바일용 GNB 슬라이드 메뉴 -->
                 <nav class="gnb-slide">
                     <button class="gnb-close" aria-label="모바일 메뉴 닫기">✕</button>
@@ -145,125 +141,81 @@
         </div>
         <main id="main">
             <!-- 전체 래퍼 -->
-            <div class="container" id="main-visual-container">
-                <div id="main-visual-wrap">
-                    <div class="main-visual-inner swiper mainSwiper">
-                        <div class="swiper-wrapper">
-                
+            <!-- 수정된 메인비주얼 HTML: 컨테이너 1단계 제거 및 slide-card 전체 배경화면화 -->
+            <div id="main-visual-wrap">
+                <div class="main-visual-inner swiper mainSwiper">
+                    <div class="swiper-wrapper">
                         <!-- 슬라이드 1 -->
                         <div class="swiper-slide">
-                                <div class="slide-card">
-                                    <div class="slide-contents">
-                                        <div class="slide-text">
-                                        <strong>사조몰</strong>
-                                        <p>안심하고 믿을 수 있는 사조의 맛있는 먹거리</p>
-                                        </div>
-                                        <div class="slide-img">
-                                            <a href="https://sajomall.co.kr/" target="_blank" class="slide-card-link"></a>
-                                            <img src="./img/etc_img/sajotuna_youtube_1.png" alt="사조몰 이미지">
-                                        </div>
-                                    </div>
-                                </div>
+                            <a href="https://sajomall.co.kr/" target="_blank" class="slide-card" style="background-image: url('./img/etc_img/sajotuna_youtube_1.png')">
+                            <div class="slide-text">
+                                <strong>사조몰</strong>
+                                <p>안심하고 믿을 수 있는 사조의 맛있는 먹거리</p>
+                            </div>
                             </a>
                         </div>
-                
                         <!-- 슬라이드 2 -->
                         <div class="swiper-slide">
-                                <div class="slide-card">
-                                    <div class="slide-contents">
-                                        <div class="slide-text">
-                                        <strong>사조회참치</strong>
-                                        <p>50년 역사, 사조가 전하는 씨푸드</p>
-                                        </div>
-                                        <div class="slide-img">
-                                            <a href="https://sajosfmall.co.kr/" target="_blank" class="slide-card-link"></a>
-                                            <img src="./img/etc_img/sajotuna_youtube_1.png" alt="사조회참치 이미지">
-                                        </div>
-                                    </div>
-                                </div>
+                            <a href="https://sajosfmall.co.kr/" target="_blank" class="slide-card" style="background-image: url('./img/etc_img/sajotuna_youtube_1.png')">
+                            <div class="slide-text">
+                                <strong>사조회참치</strong>
+                                <p>50년 역사, 사조가 전하는 씨푸드</p>
+                            </div>
                             </a>
                         </div>
-                
                         <!-- 슬라이드 3 -->
                         <div class="swiper-slide">
-                                <div class="slide-card">
-                                    <div class="slide-contents">
-                                        <div class="slide-text">
-                                        <strong>사조김</strong>
-                                        <p>엄선된 좋은 원초, 바다에서 식탁까지</p>
-                                        </div>
-                                        <div class="slide-img">
-                                            <a href="https://smartstore.naver.com/sajoiksan" target="_blank" class="slide-card-link"></a>
-                                            <img src="./img/etc_img/sajotuna_youtube_1.png" alt="사조김 이미지">
-                                        </div>
-                                    </div>
-                                </div>
+                            <a href="https://smartstore.naver.com/sajoiksan" target="_blank" class="slide-card" style="background-image: url('./img/etc_img/sajotuna_youtube_1.png')">
+                            <div class="slide-text">
+                                <strong>사조김</strong>
+                                <p>엄선된 좋은 원초, 바다에서 식탁까지</p>
+                            </div>
                             </a>
                         </div>
-                
                         <!-- 슬라이드 4 -->
                         <div class="swiper-slide">
-                                <div class="slide-card">
-                                    <div class="slide-contents">
-                                        <div class="slide-text">
-                                        <strong>사조펫</strong>
-                                        <p>반려동물의 건강한 삶<br>사조펫과 함께하세요</p>
-                                        </div>
-                                        <div class="slide-img">
-                                            <a href="https://brand.naver.com/sajopet" target="_blank" class="slide-card-link"></a>
-                                            <img src="./img/etc_img/sajotuna_youtube_1.png" alt="사조펫 이미지">
-                                        </div>
-                                    </div>
-                                </div>
+                            <a href="https://brand.naver.com/sajopet" target="_blank" class="slide-card" style="background-image: url('./img/etc_img/sajotuna_youtube_1.png')">
+                            <div class="slide-text">
+                                <strong>사조펫</strong>
+                                <p>반려동물의 건강한 삶<br>사조펫과 함께하세요</p>
+                            </div>
                             </a>
                         </div>
-                
                         <!-- 슬라이드 5 -->
                         <div class="swiper-slide">
-                                <div class="slide-card">
-                                    <div class="slide-contents">
-                                        <div class="slide-text">
-                                        <strong>식자재왕몰</strong>
-                                        <p>식자재가 필요할 땐 식자재 전문몰, 식자재왕마트</p>
-                                        </div>
-                                        <div class="slide-img">
-                                            <a href="https://vo.la/qEHSgt" target="_blank" class="slide-card-link"></a>
-                                            <img src="./img/etc_img/sajotuna_youtube_1.png" alt="식자재왕몰 이미지">
-                                        </div>
-                                    </div>
-                                </div>
+                            <a href="https://vo.la/qEHSgt" target="_blank" class="slide-card" style="background-image: url('./img/etc_img/sajotuna_youtube_1.png')">
+                            <div class="slide-text">
+                                <strong>식자재왕몰</strong>
+                                <p>식자재가 필요할 땐 식자재 전문몰, 식자재왕마트</p>
+                            </div>
                             </a>
                         </div>
-                
-                        </div>
-                
-                        <!-- 내비게이션 -->
-                        <div class="swiper-navigation-wrap">
-                        <button class="swiper-prev" data-preview="">〈</button>
-                        <button class="swiper-next" data-preview="">〉</button>
-                        </div>
                     </div>
-                
-                    <!-- 페이지네이션 & 버튼 -->
-                    <div class="main-visual-buttons">
-                        <button class="goto-site-btn" data-index="0" data-url="https://sajomall.co.kr/">
-                        사조몰 <i class="ri-external-link-line" aria-hidden="true"></i>
-                        </button>
-                        <button class="goto-site-btn" data-index="1" data-url="https://sajosfmall.co.kr/">
-                        사조회참치 <i class="ri-external-link-line" aria-hidden="true"></i>
-                        </button>
-                        <button class="goto-site-btn" data-index="2" data-url="https://smartstore.naver.com/sajoiksan">
-                        사조김 <i class="ri-external-link-line" aria-hidden="true"></i>
-                        </button>
-                        <button class="goto-site-btn" data-index="3" data-url="https://brand.naver.com/sajopet">
-                        사조펫 <i class="ri-external-link-line" aria-hidden="true"></i>
-                        </button>
-                        <button class="goto-site-btn" data-index="4" data-url="https://vo.la/qEHSgt">
-                        식자재왕몰 <i class="ri-external-link-line" aria-hidden="true"></i>
-                        </button>
+                    <!-- 내비게이션 -->
+                    <div class="swiper-navigation-wrap">
+                        <button class="swiper-prev" data-preview="">‹</button>
+                        <button class="swiper-next" data-preview="">›</button>
                     </div>
                 </div>
-            </div>
+                 <!-- 페이지네이션 & 버튼 -->
+                <div class="main-visual-buttons">
+                    <button class="goto-site-btn" data-index="0" data-url="https://sajomall.co.kr/">
+                    사조몰 <i class="ri-external-link-line" aria-hidden="true"></i>
+                    </button>
+                    <button class="goto-site-btn" data-index="1" data-url="https://sajosfmall.co.kr/">
+                    사조회참치 <i class="ri-external-link-line" aria-hidden="true"></i>
+                    </button>
+                    <button class="goto-site-btn" data-index="2" data-url="https://smartstore.naver.com/sajoiksan">
+                    사조김 <i class="ri-external-link-line" aria-hidden="true"></i>
+                    </button>
+                    <button class="goto-site-btn" data-index="3" data-url="https://brand.naver.com/sajopet">
+                    사조펫 <i class="ri-external-link-line" aria-hidden="true"></i>
+                    </button>
+                    <button class="goto-site-btn" data-index="4" data-url="https://vo.la/qEHSgt">
+                    식자재왕몰 <i class="ri-external-link-line" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div> 
             <!--기업소개 -->
             <section class="sajo-scroll-section">
                 <div class="sajo-sticky">
@@ -503,7 +455,7 @@
 
                     <div class="esg-card-wrapper">
                         <!-- 환경 -->
-                        <div class="esg-card" style="background-image: url('./img/esg1.jpg');">
+                        <div class="esg-card" style="background-image: url('./img/Environment-markus-spiske-GnxktpZHjcM-unsplash.jpg');">
                             <div class="content">
                                 <h3>E – 환경(Environment)</h3>
                                 <p>친환경 제품 개발과 탄소 배출 저감을 통해 지속 가능한 지구를 위한 노력을 실천하고 있습니다.</p>
@@ -512,7 +464,7 @@
                         </div>
 
                         <!-- 사회 -->
-                        <div class="esg-card" style="background-image: url('./img/esg2.jpg');">
+                        <div class="esg-card" style="background-image: url('./img/Social-shane-rounce-DNkoNXQti3c-unsplash.jpg');">
                             <div class="content">
                                 <h3>S – 사회(Social)</h3>
                                 <p>협력사, 고객, 지역사회를 위한 사회적 책임을 다하며, 모두가 함께 성장하는 환경을 조성합니다.</p>
@@ -521,7 +473,7 @@
                         </div>
 
                         <!-- 지배구조 -->
-                        <div class="esg-card" style="background-image: url('./img/esg3.jpg');">
+                        <div class="esg-card" style="background-image: url('./img/Governance-khampha-phimmachak-IRUcIOMOiEI-unsplash.jpg');">
                             <div class="content">
                                 <h3>G – 지배구조(Governance)</h3>
                                 <p>투명한 경영과 윤리적 의사결정을 통해 신뢰받는 기업문화를 만들어가고 있습니다.</p>
