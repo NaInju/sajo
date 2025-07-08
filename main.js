@@ -22,8 +22,6 @@ const header = document.getElementById('header');
 const desktopGnb = document.querySelector('#gnb');
 const mobileGnb = document.querySelector('.gnb-slide');
 const dep1 = desktopGnb.querySelector('.dep1');
-const langWrap = document.querySelector('.lang-wrap');
-const langToggle = document.querySelector('.lang-toggle');
 const gnbToggleBtn = document.querySelector('.gnb-toggle');
 const gnbOverlay = document.querySelector('.gnb-overlay');
 const gnbCloseBtn = document.querySelector('.gnb-close');
@@ -48,13 +46,19 @@ desktopGnb.addEventListener('mouseenter', openGnb);
 desktopGnb.addEventListener('mouseleave', closeGnb);
 
 /** ====== LANG-WRAP 토글 ====== */
+const langWrap = document.querySelector('.lang-wrap');
+const langToggle = document.querySelector('.lang-toggle');
+const langIcon = langToggle.querySelector('i');
+
 langToggle.addEventListener('click', (e) => {
   e.stopPropagation();
   langWrap.classList.toggle('active');
 });
+
 document.addEventListener('click', (e) => {
   if (!langWrap.contains(e.target)) {
     langWrap.classList.remove('active');
+    langIcon.classList.replace('ri-arrow-up-s-fill', 'ri-arrow-down-s-fill'); // 바깥 클릭 시 초기화
   }
 });
 
