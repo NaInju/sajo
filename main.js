@@ -285,18 +285,23 @@ const brandSwiper = new Swiper('.brand-swiper', {
 /** productInfo - swiper */ 
 document.addEventListener('DOMContentLoaded', () => {
   const leftSwiper = new Swiper('.product-section .left-swiper', {
-      direction: 'horizontal',
-      speed: 800,
-      pagination: {
-      el: '.product-section .swiper-pagination',
-      clickable: true,
-      },
-      navigation: {
-          nextEl: '.product-section .swiper-button-next',
-          prevEl: '.product-section .swiper-button-prev',
-      },
-      //allowTouchMove: false,
+    direction: 'horizontal',
+    speed: 800,
+    slidesPerView: 1,
+    spaceBetween: 0,
+    centeredSlides: false,
+    observer: true,           // ✅ DOM 변화 감지
+    observeParents: true,     // ✅ 부모 요소 변경 감지
+    pagination: {
+        el: '.product-section .swiper-pagination',
+        clickable: true,
+    },
+    navigation: {
+        nextEl: '.product-section .swiper-button-next',
+        prevEl: '.product-section .swiper-button-prev',
+    },
   });
+
 
   const rightSwiper = new Swiper('.product-section .right-swiper', {
       direction: 'vertical',
