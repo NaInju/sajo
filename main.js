@@ -110,8 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
     spaceBetween: 20,
     speed: 600,
     navigation: {
-      nextEl: '.main-visual-inner .swiper-next',
-      prevEl: '.main-visual-inner .swiper-prev',
+      nextEl: '#main-visual-wrap .swiper-next',
+      prevEl: '#main-visual-wrap .swiper-prev',
     },
     on: {
       init: function () {
@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /** 슬라이드 클릭 시 현재 슬라이드 링크로 이동 */
-  document.querySelectorAll('.slide-contents').forEach((cont) => {
+  document.querySelectorAll('#main-visual-wrap .slide-contents').forEach((cont) => {
     cont.addEventListener('click', () => {
       const realIndex = swiper.realIndex;
       if (slideData[realIndex]) {
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /** 하단 버튼 클릭 시 슬라이드 이동 */
-  document.querySelectorAll('.goto-site-btn').forEach((btn) => {
+  document.querySelectorAll('#main-visual-wrap .goto-site-btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const index = parseInt(btn.getAttribute('data-index'), 10);
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /** 버튼 내부 아이콘 클릭 시 새 탭 이동 */
-  document.querySelectorAll('.goto-site-btn i').forEach((icon, index) => {
+  document.querySelectorAll('#main-visual-wrap .goto-site-btn i').forEach((icon, index) => {
     icon.addEventListener('click', (e) => {
       e.stopPropagation();
       const url = slideData[index]?.url;
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   /** 현재 활성화된 버튼 스타일 적용 */
   function updateActiveButton(index) {
-    document.querySelectorAll('.goto-site-btn').forEach((btn, i) => {
+    document.querySelectorAll('#main-visual-wrap .goto-site-btn').forEach((btn, i) => {
       btn.classList.toggle('active', i === index);
     });
   }
@@ -166,8 +166,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const nextIndex = (currentIndex + 1) % total;
     const prevIndex = (currentIndex - 1 + total) % total;
 
-    const nextBtn = document.querySelector('.main-visual-inner .swiper-next');
-    const prevBtn = document.querySelector('.main-visual-inner .swiper-prev');
+    const nextBtn = document.querySelector('#main-visual-wrap .swiper-next');
+    const prevBtn = document.querySelector('#main-visual-wrap .swiper-prev');
 
     nextBtn.setAttribute('data-preview', slideData[nextIndex].name);
     prevBtn.setAttribute('data-preview', slideData[prevIndex].name);
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-/** enter scroll */ 
+/** SAJO SCROLL */ 
 // 1. 메인 타임라인: 캔 → 로고 → 블러 → 위로 이동 → 디스크립션 등장
 const mainTimeline = gsap.timeline({
   scrollTrigger: {
@@ -213,10 +213,13 @@ transitionTimeline
 const colors = ['#02164E', '#00831D', '#D90000'];
 const panels = document.querySelectorAll(".keyword-panel");
 
-panels.forEach((panel, i) => {
-  const start = 1100 + i * 200;
-  const end = 1200 + i * 200;
+const baseStart = 1100;
+const stay = 800;  // 각 패널 등장 후 머무는 시간
+const fade = 300;  // 퇴장 시간 (마지막 제외)
 
+panels.forEach((panel, i) => {
+  const start = baseStart + i * (stay + fade);
+  const end = start + (i === panels.length - 1 ? 1500 : stay); // 마지막 패널만 더 길게
   // 등장
   gsap.fromTo(panel,
     { y: 100, opacity: 0 },
@@ -243,14 +246,16 @@ panels.forEach((panel, i) => {
       scrollTrigger: {
         trigger: ".sajo-scroll-section",
         start: `top+=${end} top`,
-        end: `top+=${end + 100} top`,
+        end: `top+=${end + fade} top`,
         scrub: true,
       }
     });
   }
 });
 
+
 // 4. 키워드 패널 영역 벗어날 때 로고 색상 흰색으로 복귀
+
 ScrollTrigger.create({
   trigger: ".sajo-scroll-section",
   start: "top+=1000 top",
@@ -261,28 +266,49 @@ ScrollTrigger.create({
   }
 });
 
+// const finalEnd = baseStart + (panels.length - 1) * (stay + fade) + 1500;
 
+// ScrollTrigger.create({
+//   trigger: ".sajo-scroll-section",
+//   start: `top+=${finalEnd} top`,
+//   end: `top+=${finalEnd + 200} top`,
+//   scrub: true,
+//   onEnter: () => gsap.to(".sajo-logo", { color: "#fff", duration: 0.3 }),
+//   onEnterBack: () => gsap.to(".sajo-logo", { color: "#fff", duration: 0.3 }),
+// });
 
-/** brand swiper */ 
-const brandSwiper = new Swiper('.brand-swiper', {
+ScrollTrigger.refresh();
+
+/** BRAND SWIPER */ 
+
+const topSwiper = new Swiper('.brand-swiper.top .swiper', {
   loop: true,
-  loopAdditionalSlides: 5,
   slidesPerView: 'auto',
   spaceBetween: 20,
-  freeMode: true,
-  freeModeMomentum: false,
-  speed: 3000,  // 전체 이동 속도
+  speed: 8000, // 천천히 흐르게
+  allowTouchMove: false, // 사용자가 끌 수 없게
   autoplay: {
-    delay: 0,  // 지연 없이 흐름
+    delay: 0, // 계속 흐르게
     disableOnInteraction: false,
-    pauseOnMouseEnter: false,
   },
 });
 
+const bottomSwiper = new Swiper('.brand-swiper.bottom .swiper', {
+  loop: true,
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  speed: 8000,
+  allowTouchMove: false,
+  autoplay: {
+    delay: 0,
+    disableOnInteraction: false,
+    reverseDirection: true,
+  },
+});
   
 
 
-/** productInfo - swiper */ 
+/** PRODUCT-INFO SWIPER*/ 
 document.addEventListener('DOMContentLoaded', () => {
   const leftSwiper = new Swiper('.product-section .left-swiper', {
     direction: 'horizontal',
