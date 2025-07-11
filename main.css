@@ -566,47 +566,74 @@ body {
   opacity: 1;
 }
 
-/** finacial section */
-/* 배경으로 단색보다는 좀 어울리는 이미지를 찾기 */
+/** FINANCIAL-SECTION */
+
 .financial-section {
-      background: url() center/cover no-repeat;
-      padding: 10rem 0;margin-top: 12rem;
-      text-align: center;
+  position: relative;
+  display: flex;flex-direction: column;
+  justify-content: center;align-items: center;
+  background: url() center/cover no-repeat;
+  padding: 10rem 0;margin-top: 15rem;gap: 8rem;
+  text-align: center;
+  overflow: hidden;
 }
+
 .financial-title {
-  font-size: 4rem;font-weight: 700;
-  margin-bottom: 4rem;
-  color: black;
-  /* color: #fff; */
+  position: absolute;z-index: 4;top: 0;
+  font-size: 4rem;font-weight: 700;color: black;
+  /* 필요 시 color: #fff; */
 }
+
+.grid-bg {
+  position: relative;
+  display: flex;justify-content: center;align-items: center;
+  width: 100vw;height: 43vh;padding: 0 10vw;
+  overflow: hidden;object-fit: cover;
+  transform: translateY(12%);
+}
+.grid-bg img {
+  width: 100%;object-fit: cover;
+  /* transform: translateY(-40%); */
+}
+
 .financial-grid {
-  display: flex;justify-content: center;
-  gap: 2rem;
-  width: 80vw;margin: 0 auto;
-  flex-wrap: wrap;
+  position: absolute;z-index: 4;top: 25%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 20vh;
+  gap: 2rem;width: 80vw;margin: 0 auto;
 }
+
 .financial-item {
-  flex: 1 1 30%;
+  display: flex;flex-direction: column;
+  justify-content: center;align-items: center;
   background: rgba(0, 0, 0, 0.6);
   padding: 3rem 2rem;
-  border-radius: 1.2rem;
+  outline: 2rem solid #fff; border-radius: 1.2rem;
 }
+
+/* 두 번째 줄(총자산)만 전체 너비 차지 */
+.financial-grid .financial-item:nth-child(3) {
+  grid-column: span 2;
+}
+
 .financial-label {
   font-size: 1.8rem;
   margin-bottom: 1rem;
   color: #aaa;
 }
+
 .financial-number {
   font-size: 3.6rem;
   font-weight: bold;
   color: #00bfff;
 }
+
 .financial-note {
   font-size: 1.4rem;
   margin-top: 1rem;
   color: #ccc;
 }
-
 
 /** news - wrap */
 .news-wrap .container {padding: 11rem;}
