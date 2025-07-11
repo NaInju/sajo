@@ -481,56 +481,37 @@ body {
 }
 .product-section .swiper-pagination {
   z-index: 10;position: absolute;
-  bottom: 2rem;left: 50%;
-  transform: translateX(-50%);
+  bottom: 2rem;left: 50%;transform: translateX(-50%);
 }
 .product-section .swiper-button-prev,
 .product-section .swiper-button-next {
   z-index: 10;position: absolute;
-  top: 50%;color: #fff;
-  transform: translateY(-50%);
+  top: 50%;color: #fff;transform: translateY(-50%);
 }
-.product-section .swiper-button-prev {
-  left: 3rem;
-}
-.product-section .swiper-button-next {
-  right: 3rem;
-}
+.product-section .swiper-button-prev {left: 3rem;}
+.product-section .swiper-button-next {right: 3rem;}
 
 /* 제품 설명 + 이미지 그리드 */
 .prod-grid {
   display: grid;overflow: hidden;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin: 10rem;
+  gap: 2rem;margin: 10rem;
 }
 .prod-text {
   grid-column: span 1;
-  display: flex;
-  flex-direction: column;
-  padding: 3rem;
-  gap: 2rem;
-  border-radius: 1.2rem;
+  display: flex;flex-direction: column;
+  padding: 3rem;gap: 2rem;border-radius: 1.2rem;
   /* background: #f3f3f3; */
 }
-.product-section .right-swiper strong {
-  font-size: 3rem;
-  font-weight: 600;
-}
-.product-section .right-swiper p {
-  font-size: 1.8rem;
-  line-height: 3rem;
-}
+.product-section .right-swiper strong {font-size: 3rem;font-weight: 600;}
+.product-section .right-swiper p {font-size: 1.8rem;line-height: 3rem;}
 
 /* 제품 이미지 */
 .prod-img {
   width: 20vw;aspect-ratio: 1 / 1;
   position: relative;display: flex;justify-content: center;align-items: center;
-  overflow: hidden; 
-  border-radius: 1.2rem;
-  text-align: center;
-  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
+  overflow: hidden;text-align: center;cursor: pointer; 
+  border-radius: 1.2rem;box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1);
   background: #ffffff;
 }
 .prod-img img {
@@ -539,32 +520,18 @@ body {
   display: block;
   transition: transform 0.3s ease;
 }
-.prod-img:hover img {
-  transform: scale(1.05);
-}
+.prod-img:hover img {transform: scale(1.05);}
 
 /* Hover 시 텍스트 오버레이 */
 .prod-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
+  position: absolute;top: 0;left: 0;
+  width: 100%;height: 100%;padding: 2rem;
+  background: rgba(0, 0, 0, 0.5);color: #fff;opacity: 0;
+  display: flex;align-items: center;justify-content: center;
   transition: opacity 0.3s ease;
-  text-align: center;
-  padding: 2rem;
-  font-size: 1.6rem;
-  line-height: 1.5;
+  text-align: center;font-size: 1.6rem;line-height: 1.5;
 }
-.prod-img:hover .prod-overlay {
-  opacity: 1;
-}
+.prod-img:hover .prod-overlay {opacity: 1;}
 
 /** FINANCIAL-SECTION */
 
@@ -572,10 +539,14 @@ body {
   position: relative;
   display: flex;flex-direction: column;
   justify-content: center;align-items: center;
-  background: url() center/cover no-repeat;
-  padding: 10rem 0;margin-top: 15rem;gap: 8rem;
-  text-align: center;
-  overflow: hidden;
+  padding: 10rem 0;margin-top: 15rem;
+  text-align: center;overflow: hidden;
+}
+.financial-section .bg-container {
+  position: relative;
+  display: flex;flex-direction: column;
+  justify-content: center;align-items: center;
+  text-align: center;overflow: hidden;
 }
 
 .financial-title {
@@ -589,15 +560,11 @@ body {
   display: flex;justify-content: center;align-items: center;
   width: 100vw;height: 43vh;padding: 0 10vw;
   overflow: hidden;object-fit: cover;
-  transform: translateY(12%);
 }
-.grid-bg img {
-  width: 100%;object-fit: cover;
-  /* transform: translateY(-40%); */
-}
+.grid-bg img {width: 100%;object-fit: cover;}
 
 .financial-grid {
-  position: absolute;z-index: 4;top: 25%;
+  position: absolute;z-index: 4;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-auto-rows: 20vh;
@@ -613,29 +580,13 @@ body {
 }
 
 /* 두 번째 줄(총자산)만 전체 너비 차지 */
-.financial-grid .financial-item:nth-child(3) {
-  grid-column: span 2;
-}
+.financial-grid .financial-item:nth-child(3) {grid-column: span 2;}
+.financial-label {font-size: 1.8rem;margin-bottom: 1rem;color: #aaa;}
+.financial-number {font-size: 3.6rem;font-weight: bold;color: #00bfff;}
+.financial-note {font-size: 1.4rem;margin-top: 1rem;color: #ccc;}
 
-.financial-label {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  color: #aaa;
-}
 
-.financial-number {
-  font-size: 3.6rem;
-  font-weight: bold;
-  color: #00bfff;
-}
-
-.financial-note {
-  font-size: 1.4rem;
-  margin-top: 1rem;
-  color: #ccc;
-}
-
-/** news - wrap */
+/** NEWS-WRAP */
 .news-wrap .container {padding: 11rem;}
 .news-wrap .news-header {
   display: flex;justify-content: space-between;align-items: center;
