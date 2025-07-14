@@ -428,16 +428,16 @@ body {
 }
 
 /* 브랜드 스와이퍼 공통 */
-.brand-swiper {width: 100%;padding: 4rem 0;overflow: hidden;}
+.brand-swiper {width: 100%;padding: 2rem 0;overflow: hidden;}
 .brand-swiper .swiper {width: 100%;}
 .brand-swiper .swiper-wrapper {display: flex;align-items: center;
 }
-.brand-swiper .swiper-slide {width: auto;text-align: center;}
-.brand-swiper .swiper-slide a {display: inline-block;width: 30rem;height: 15rem;margin: 0 1rem;}
-.brand-swiper .swiper-slide img {width: 100%;height: 100%;object-fit: contain;}
+.brand-swiper .swiper-slide {width: auto;text-align: center;display: flex;justify-content: center;align-items: center;}
+.brand-swiper .swiper-slide a {display: inline-block;width: 30rem;margin: 0 1rem;}
+.brand-swiper .swiper-slide img {width: 15vw;aspect-ratio: 1 / 1;object-fit: contain;border: 1px solid red;}
 
 /* 각 줄에 차이점 (옵션에 따라 여백 조정 등도 가능) */
-.brand-swiper.top {background: #f9f9f9;margin-bottom: 3rem;}
+.brand-swiper.top {background: #f9f9f9;margin-bottom: 4rem;}
 .brand-swiper.bottom {background: #f9f9f9;}
 
 
@@ -470,14 +470,21 @@ body {
   justify-content: center;align-items: center;
   background: #f7f7f7;color: #333;
   width: 55%;height: 100vh;
-  overflow: hidden;padding: 2rem;margin: 0;gap: 0;
+  overflow: hidden;padding: 0;margin: 0;gap: 0;
+}
+.right-swiper .swiper-slide {
+  display: flex;justify-content: center;align-items: center;
 }
 
 /* Swiper 공통 */
-.product-section .swiper-wrapper {display: flex;width: 100%;height: 100%;padding: 0;gap: 0;}
+.product-section .swiper-wrapper {
+  display: flex;
+  width: 100%;height: 100%;padding: 0;gap: 0;
+}
 .product-section .swiper-slide {
   display: flex;align-items: center;justify-content: center;
-  flex-shrink: 0;width: 100%;box-sizing: border-box;
+  /* flex-shrink: 0; */
+  width: 100%;box-sizing: border-box;
 }
 .product-section .swiper-pagination {
   z-index: 10;position: absolute;
@@ -495,7 +502,7 @@ body {
 .prod-grid {
   display: grid;overflow: hidden;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;margin: 10rem;
+  gap: 2rem;padding: 10rem;
 }
 .prod-text {
   grid-column: span 1;
