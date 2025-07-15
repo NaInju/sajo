@@ -285,7 +285,7 @@ const topSwiper = new Swiper('.brand-swiper.top .swiper', {
   loop: true,
   slidesPerView: 'auto',
   spaceBetween: 20,
-  speed: 8000, // 천천히 흐르게
+  speed: 4000, // 천천히 흐르게
   allowTouchMove: false, // 사용자가 끌 수 없게
   autoplay: {
     delay: 0, // 계속 흐르게

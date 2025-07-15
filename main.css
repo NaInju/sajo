@@ -420,8 +420,12 @@ body {
 
 
 /** BRAND - INFO */
-
-.brand-info .container {padding: 10rem 2rem;}
+.brand-info {width: 100%;height: 120vh;}
+.brand-info .container {
+  height: 100%;
+  display: flex;flex-direction: column;
+  justify-content: center;
+}
 .brand-info h2 {
   display: block;margin-bottom: 6rem;
   text-align: center;font-size: 4rem;font-weight: bold;
@@ -430,10 +434,9 @@ body {
 /* 브랜드 스와이퍼 공통 */
 .brand-swiper {width: 100%;padding: 2rem 0;overflow: hidden;}
 .brand-swiper .swiper {width: 100%;}
-.brand-swiper .swiper-wrapper {display: flex;align-items: center;
-}
+.brand-swiper .swiper-wrapper {display: flex;align-items: center;gap: 3rem;}
 .brand-swiper .swiper-slide {width: auto;text-align: center;display: flex;justify-content: center;align-items: center;}
-.brand-swiper .swiper-slide a {display: inline-block;width: 30rem;margin: 0 1rem;}
+.brand-swiper .swiper-slide a {display: inline-block;margin: 0 1rem;border: 1px solid red;}
 .brand-swiper .swiper-slide img {width: 15vw;aspect-ratio: 1 / 1;object-fit: contain;border: 1px solid red;}
 
 /* 각 줄에 차이점 (옵션에 따라 여백 조정 등도 가능) */
@@ -617,8 +620,8 @@ body {
 .thumb-img img {width: 100%;height: 100%;object-fit: cover;}
 .news-txt {
   flex: 1;display: flex;flex-direction: column;justify-content: space-between;
-  overflow: hidden;text-overflow: ellipsis;
-  height: 35vh;padding: 4rem;padding-right: 0;
+  overflow: hidden;
+  height: 35vh;padding: 3rem;padding-right: 0;
   /* border: 1px solid red; */
 }
 .news-cate {font-size: 2.3rem;font-weight: 600;color: #00831D;margin-bottom: 0.8rem;}
@@ -637,9 +640,14 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
+  /* border: 1px solid red; */
 }
 
-.news-txt .date {font-size: 1.4rem;color: #999;transform: translate(90%, 120%);}
+.news-txt .date {
+  display: flex;justify-content: flex-end;align-items: center;
+  font-size: 1.4rem;color: #999;transform: translateY(100%);
+  /* border: 1px solid red; */
+}
 
 /** ESG */
 /* ========== ESG Section ========== */
