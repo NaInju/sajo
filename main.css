@@ -327,7 +327,7 @@ body {
   display: flex;flex-direction: column;justify-content: center;
   text-align: center;
   width: 100%;height: 100%;
-  background: rgba(0, 0, 0, 0.4);color: #fff;
+  background: rgba(0, 0, 0, 0.2);color: #fff;
   border-radius: 2rem;padding: 4rem;box-sizing: border-box;
 }
 
@@ -372,12 +372,17 @@ body {
   background: #fff;color: #02164E;
   font-size: 1.4rem;font-weight: 600;
   border: 1px solid #ccc;border-radius: 1.2rem;
-  padding: 1rem 1.8rem;margin: 0.6rem;gap: 0.6rem;
+  padding: 1rem 1.8rem;margin: 0.6rem;gap: 0.6rem;margin-top: 3rem;
   cursor: pointer;
   transition: all 0.3s;
 }
 
-#main-visual-wrap .goto-site-btn:hover {background: #02164E;color: #fff;}
+/* #main-visual-wrap .goto-site-btn:hover {background: #02164E;color: #fff;} */
+#main-visual-wrap .goto-site-btn:nth-child(1):hover {background: #FF6EAF;color: #fff;}
+#main-visual-wrap .goto-site-btn:nth-child(2):hover {background: #ED6160;color: #fff;}
+#main-visual-wrap .goto-site-btn:nth-child(3):hover {background: #A9C300;color: #fff;}
+#main-visual-wrap .goto-site-btn:nth-child(4):hover {background: #01AC82;color: #fff;}
+#main-visual-wrap .goto-site-btn:nth-child(5):hover {background: #E70012;color: #fff;}
 #main-visual-wrap .goto-site-btn i {font-size: 1.6rem;vertical-align: middle;}
 
 /** ENTER - INFO */
@@ -436,12 +441,12 @@ body {
 .brand-swiper .swiper {width: 100%;}
 .brand-swiper .swiper-wrapper {display: flex;align-items: center;gap: 3rem;}
 .brand-swiper .swiper-slide {width: auto;text-align: center;display: flex;justify-content: center;align-items: center;}
-.brand-swiper .swiper-slide a {display: inline-block;margin: 0 1rem;border: 1px solid red;}
-.brand-swiper .swiper-slide img {width: 15vw;aspect-ratio: 1 / 1;object-fit: contain;border: 1px solid red;}
+.brand-swiper .swiper-slide a {display: inline-block;margin: 0 1rem;}
+.brand-swiper .swiper-slide img {width: 15vw;aspect-ratio: 1 / 1;object-fit: contain;}
 
 /* 각 줄에 차이점 (옵션에 따라 여백 조정 등도 가능) */
-.brand-swiper.top {background: #f9f9f9;margin-bottom: 4rem;}
-.brand-swiper.bottom {background: #f9f9f9;}
+.brand-swiper.top {margin-bottom: 2rem;}
+/* .brand-swiper.bottom {background: #f9f9f9;} */
 
 
 /* PRODUCT INFO */
@@ -464,6 +469,7 @@ body {
 .product-section .left-swiper img {
   width: 100%;height: 100%;
   object-fit: cover;overflow: hidden;
+  object-position: 80% center;
 }
 
 /* 오른쪽 Swiper */
