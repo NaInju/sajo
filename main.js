@@ -214,7 +214,7 @@ const colors = ['#02164E', '#00831D', '#D90000'];
 const panels = document.querySelectorAll(".keyword-panel");
 
 const baseStart = 1100;
-const stay = 800;  // 각 패널 등장 후 머무는 시간
+const stay = 1200;  // 각 패널 등장 후 머무는 시간
 const fade = 300;  // 퇴장 시간 (마지막 제외)
 
 panels.forEach((panel, i) => {
