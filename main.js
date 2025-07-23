@@ -191,15 +191,15 @@ mainTimeline
   .from(".sajo-can", { opacity: 0, y: 50 })
   .to(".sajo-logo", { opacity: 1, color: "#fff" })  // 로고 흰색으로 등장
   .to(".sajo-can img", { filter: "blur(10px)" })
-  .to([".sajo-can", ".sajo-logo"], { y: -80 })
+  .to([".sajo-can",".sajo-logo"], { y: -50 })
   .to(".sajo-description", { opacity: 1 });
 
 // 2. 디스크립션 고정 상태 이후: 배경 흰색, 로고 축소, 디스크립션 퇴장
 const transitionTimeline = gsap.timeline({
   scrollTrigger: {
     trigger: ".sajo-scroll-section",
-    start: "top+=900 top",
-    end: "top+=1000 top",
+    start: "top+=1300 top",
+    end: "top+=1500 top",
     scrub: true,
   }
 });
@@ -213,8 +213,8 @@ transitionTimeline
 const colors = ['#02164E', '#00831D', '#D90000'];
 const panels = document.querySelectorAll(".keyword-panel");
 
-const baseStart = 1100;
-const stay = 1200;  // 각 패널 등장 후 머무는 시간
+const baseStart = 1200;
+const stay = 1300;  // 각 패널 등장 후 머무는 시간
 const fade = 300;  // 퇴장 시간 (마지막 제외)
 
 panels.forEach((panel, i) => {
@@ -310,41 +310,94 @@ const bottomSwiper = new Swiper('.brand-swiper.bottom .swiper', {
 
 /** PRODUCT-INFO SWIPER*/ 
 document.addEventListener('DOMContentLoaded', () => {
-  const leftSwiper = new Swiper('.product-section .left-swiper', {
-    direction: 'horizontal',
-    speed: 800,
-    slidesPerView: 1,
-    spaceBetween: 0,
-    centeredSlides: false,
-    observer: true,           // ✅ DOM 변화 감지
-    observeParents: true,     // ✅ 부모 요소 변경 감지
-    pagination: {
+  let leftSwiper = null;
+  let rightSwiper = null;
+  let mobileRightSwiper = null;
+
+  const initDesktopSwipers = () => {
+    leftSwiper = new Swiper('.product-section .left-swiper', {
+      direction: 'horizontal',
+      speed: 800,
+      slidesPerView: 1,
+      spaceBetween: 0,
+      centeredSlides: false,
+      observer: true,
+      observeParents: true,
+      pagination: {
         el: '.product-section .swiper-pagination',
         clickable: true,
-    },
-    navigation: {
+      },
+      navigation: {
         nextEl: '.product-section .swiper-button-next',
         prevEl: '.product-section .swiper-button-prev',
-    },
-  });
+      },
+    });
 
-
-  const rightSwiper = new Swiper('.product-section .right-swiper', {
+    rightSwiper = new Swiper('.product-section .right-swiper', {
       direction: 'vertical',
       effect: 'fade',
       fadeEffect: { crossFade: true },
       speed: 800,
-      //allowTouchMove: false,
-  });
+      allowTouchMove: false,
+    });
 
-  leftSwiper.controller.control = rightSwiper;
-  rightSwiper.controller.control = leftSwiper;
+    leftSwiper.controller.control = rightSwiper;
+    rightSwiper.controller.control = leftSwiper;
+  };
 
-  gsap.registerPlugin(ScrollTrigger);
-  const totalSlides = 4;
+  const initMobileSwiper = () => {
+    mobileRightSwiper = new Swiper('.product-section .right-swiper', {
+      direction: 'horizontal',
+      speed: 600,
+      slidesPerView: 1,
+      pagination: {
+        el: '.product-section .swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.product-section .swiper-button-next',
+        prevEl: '.product-section .swiper-button-prev',
+      },
+    });
+  };
 
+  const destroyDesktopSwipers = () => {
+    if (leftSwiper) {
+      leftSwiper.destroy();
+      leftSwiper = null;
+    }
+    if (rightSwiper) {
+      rightSwiper.destroy();
+      rightSwiper = null;
+    }
+  };
+
+  const destroyMobileSwiper = () => {
+    if (mobileRightSwiper) {
+      mobileRightSwiper.destroy();
+      mobileRightSwiper = null;
+    }
+  };
+
+  const handleResponsiveSwiper = () => {
+    const isMobile = window.innerWidth <= 700;
+
+    if (isMobile) {
+      destroyDesktopSwipers();
+      if (!mobileRightSwiper) {
+        initMobileSwiper();
+      }
+    } else {
+      destroyMobileSwiper();
+      if (!leftSwiper && !rightSwiper) {
+        initDesktopSwipers();
+      }
+    }
+  };
+
+  handleResponsiveSwiper();
+  window.addEventListener('resize', handleResponsiveSwiper);
 });
-
 
 
 /** financial section */ 
