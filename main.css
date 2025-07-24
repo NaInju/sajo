@@ -310,7 +310,7 @@ body {
 }
 
 #main-visual-wrap .slide-card {
-  position: relative;display: flex;
+  position: relative;display: flex;flex-direction: column;
   justify-content: center;align-items: center;
   height: 60vh;width: auto;
   background-size: cover;
@@ -330,7 +330,7 @@ body {
 }
 #main-visual-wrap .slide-text {
   z-index: 3;position: relative;
-  display: flex;flex-direction: column;justify-content: center;
+  display: flex;flex-direction: column;justify-content: center;align-items: center;
   text-align: center;
   width: 100%;height: 100%;
   background: rgba(0, 0, 0, 0.2);color: #fff;
@@ -340,6 +340,11 @@ body {
 #main-visual-wrap .slide-text strong {font-size: 3.6rem;font-weight: bold;}
 #main-visual-wrap .slide-text p {margin-top: 1rem;font-size: 2.4rem;line-height: 1.6;}
 #main-visual-wrap .slide-img {display: none; /* 카드 전체가 배경 이미지로 바뀌므로 이미지 요소 제거 */}
+#main-visual-wrap .cta-text {
+  z-index: 3;position: absolute;bottom: 15%;
+  color: #eeeeee;font-size: 2rem;text-align: center;
+  border: 1px solid blue;
+}
 
 #main-visual-wrap .swiper {overflow: visible !important;}
 #main-visual-wrap .swiper-wrapper {margin-left: -2rem;margin-right: -2rem;}
@@ -392,10 +397,20 @@ body {
 #main-visual-wrap .goto-site-btn:nth-child(5):hover {background: #E70012;color: #fff;}
 #main-visual-wrap .goto-site-btn i {font-size: 1.6rem;vertical-align: middle;}
 
+
+@media (max-width: 700px) {
+  #main-visual-wrap .slide-text strong {font-size: 3rem;}
+  #main-visual-wrap .slide-text p {font-size: 1.8rem;}
+}
+
 @media (max-width: 500px) {
   #main-visual-wrap .main-visual-buttons{
     display: flex;justify-content: center;align-items: center;flex-wrap: wrap;
     margin: 3rem 2rem;
+  }
+  #main-visual-wrap .slide-text {
+    white-space: normal;
+    word-break: break-word;
   }
 }
 
@@ -437,16 +452,24 @@ body {
 .keyword-panel strong {font-size: 18rem;font-weight: 600;}
 .keyword-panel span {display: block;}
 
+@media (max-width: 1000px) {
+  
+}
+
+
 @media (max-width: 700px) {
   .sajo-can img {width: 50rem;}
   .sajo-logo {font-size: 13rem;transform: translateY(-35%);}
   .sajo-description {
-    font-size: 2rem;line-height: 4rem;
+    font-size: 2.5rem;line-height: 4rem;
     transform: translateY(-20%);
   }
   .mobile-br {display: inline;}
-  .keyword-panel {font-size: 2rem;top: 50%;}
-  .keyword-panel strong {font-size: 7rem;}
+  .keyword-panel {font-size: 2.7rem;top: 50%;}
+  .keyword-panel strong {font-size: 7rem;margin-bottom: 2rem;}
+  .keyword-panel span {white-space: nowrap;}
+  
+  
 
 }
 
