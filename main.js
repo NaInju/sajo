@@ -181,7 +181,7 @@ const mainTimeline = gsap.timeline({
   scrollTrigger: {
     trigger: ".sajo-scroll-section",
     start: "top top",
-    end: "top+=600 top",
+    end: "top+=2400 top", // ✅ 기존 600 → 4배 느리게
     scrub: true,
     marker: true,
   }
@@ -190,36 +190,82 @@ const mainTimeline = gsap.timeline({
 mainTimeline
   .from(".sajo-can", { opacity: 0, y: 50 })
   .to(".sajo-logo", { opacity: 1, color: "#fff" })  // 로고 흰색으로 등장
-  .to(".sajo-can img", { filter: "blur(10px)" })
+  .to(".sajo-can img", { filter: "blur(10px)", opacity: 0.8})
   .to([".sajo-can",".sajo-logo"], { y: -50 })
   .to(".sajo-description", { opacity: 1 });
 
-// 2. 디스크립션 고정 상태 이후: 배경 흰색, 로고 축소, 디스크립션 퇴장
+
 const transitionTimeline = gsap.timeline({
   scrollTrigger: {
     trigger: ".sajo-scroll-section",
-    start: "top+=1300 top",
-    end: "top+=1500 top",
+    start: "top+=2500 top",
+    end: "top+=2700 top",
     scrub: true,
   }
 });
 
-transitionTimeline
-  .to(".sajo-scroll-section", { backgroundColor: "#fff" })
-  .to(".sajo-logo", { scale: 0.3, y: -350 }, "<")
-  .to(".sajo-description", { opacity: 0 }, "<");
+// 2. 디스크립션 고정 상태 이후: 배경 흰색, 로고 축소, 디스크립션 퇴장
 
-// 3. 키워드 패널: 순차 등장, 로고 색상 변경 (마지막은 퇴장 없음)
+// 공통 애니메이션
+transitionTimeline.to(".sajo-scroll-section", { backgroundColor: "#fff" });
+transitionTimeline.to(".sajo-description", { opacity: 0 }, "<");
+
+// ✅ 반응형으로 로고 애니메이션 분기
+ScrollTrigger.matchMedia({
+  // 모바일
+  "(max-width: 500px)": function () {
+    gsap.to(".sajo-logo", {
+      scale: 0.2,   // 모바일은 덜 작게
+      y: -200,      // 이동도 덜
+      scrollTrigger: {
+        trigger: ".sajo-scroll-section",
+        start: "top+=2500 top",
+        end: "top+=2700 top",
+        scrub: true,
+      }
+    });
+  },
+
+  "(max-width: 800px)": function () {
+    gsap.to(".sajo-logo", {
+      scale: 0.3,   // 모바일은 덜 작게
+      y: -300,      // 이동도 덜
+      scrollTrigger: {
+        trigger: ".sajo-scroll-section",
+        start: "top+=2500 top",
+        end: "top+=2700 top",
+        scrub: true,
+      }
+    });
+  },
+
+  // 데스크탑
+  "(min-width: 801px)": function () {
+    gsap.to(".sajo-logo", {
+      scale: 0.3,
+      y: -350,
+      scrollTrigger: {
+        trigger: ".sajo-scroll-section",
+        start: "top+=2500 top",
+        end: "top+=2700 top",
+        scrub: true,
+      }
+    });
+  }
+});
+
+// 3. 키워드 패널: 순차 등장, 로고 색상 변경
 const colors = ['#02164E', '#00831D', '#D90000'];
 const panels = document.querySelectorAll(".keyword-panel");
 
-const baseStart = 1200;
-const stay = 1300;  // 각 패널 등장 후 머무는 시간
-const fade = 300;  // 퇴장 시간 (마지막 제외)
+const baseStart = 2800;  // ✅ 2500 뒤에서 여유 있게 시작
+const stay = 1300;
+const fade = 300;
 
 panels.forEach((panel, i) => {
   const start = baseStart + i * (stay + fade);
-  const end = start + (i === panels.length - 1 ? 1500 : stay); // 마지막 패널만 더 길게
+  const end = start + (i === panels.length - 1 ? 1500 : stay);
+
   // 등장
   gsap.fromTo(panel,
     { y: 100, opacity: 0 },
@@ -253,13 +299,11 @@ panels.forEach((panel, i) => {
   }
 });
 
-
 // 4. 키워드 패널 영역 벗어날 때 로고 색상 흰색으로 복귀
-
 ScrollTrigger.create({
   trigger: ".sajo-scroll-section",
-  start: "top+=1000 top",
-  end: "top+=1100 top",
+  start: "top+=4800 top", // ✅ 이전보다 훨씬 뒤로
+  end: "top+=4900 top",
   scrub: true,
   onEnterBack: () => {
     gsap.to(".sajo-logo", { color: "#fff", duration: 0.3 });
