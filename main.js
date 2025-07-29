@@ -16,7 +16,7 @@ sections.forEach(section => { //.array는 필요없음. 이미 위에 구문에�
 
 gsap.registerPlugin(ScrollTrigger);
 
-/** HEADER */ 
+/** ================================= HEADER ================================== */ 
 
 const header = document.getElementById('header');
 const desktopGnb = document.querySelector('#gnb');
@@ -91,7 +91,7 @@ mobileDep1Links.forEach(link => {
   });
 });
 
-/** MAIN-VISUAL-WRAP */ 
+/** ============================= MAIN-VISUAL-WRAP ============================= */ 
 /** main-visual-wrap 슬라이드 데이터 */
 const slideData = [
   { name: '사조몰', url: 'https://sajomall.co.kr/' },
@@ -172,10 +172,33 @@ document.addEventListener("DOMContentLoaded", function () {
     nextBtn.setAttribute('data-preview', slideData[nextIndex].name);
     prevBtn.setAttribute('data-preview', slideData[prevIndex].name);
   }
+
+  /** 화면 너비에 따라 슬라이드 배경 이미지 교체 */
+  function updateSlideImages() {
+    const isMobile = window.innerWidth <= 700; // 모바일 기준 폭
+    const imgNames = [
+      'mainvisual_sajomall',
+      'mainvisual_sajosasimimall',
+      'mainvisual_sajogim',
+      'mainvisual_sajopet',
+      'mainvisual_sikjajaemall',
+    ];
+
+    document.querySelectorAll('#main-visual-wrap .slide-card').forEach((card, i) => {
+      const imgPath = isMobile
+        ? `./img/main_visual/mobile/${imgNames[i]}_m.png`
+        : `./img/main_visual/${imgNames[i]}.png`;
+      card.style.backgroundImage = `url('${imgPath}')`;
+    });
+  }
+
+  // 페이지 로드 & 리사이즈 시 이미지 교체 실행
+  updateSlideImages();
+  window.addEventListener('resize', updateSlideImages);
+
 });
 
-
-/** SAJO SCROLL */ 
+/** =============================== SAJO SCROLL ================================= */ 
 // 1. 메인 타임라인: 캔 → 로고 → 블러 → 위로 이동 → 디스크립션 등장
 const mainTimeline = gsap.timeline({
   scrollTrigger: {
@@ -310,20 +333,10 @@ ScrollTrigger.create({
   }
 });
 
-// const finalEnd = baseStart + (panels.length - 1) * (stay + fade) + 1500;
-
-// ScrollTrigger.create({
-//   trigger: ".sajo-scroll-section",
-//   start: `top+=${finalEnd} top`,
-//   end: `top+=${finalEnd + 200} top`,
-//   scrub: true,
-//   onEnter: () => gsap.to(".sajo-logo", { color: "#fff", duration: 0.3 }),
-//   onEnterBack: () => gsap.to(".sajo-logo", { color: "#fff", duration: 0.3 }),
-// });
 
 ScrollTrigger.refresh();
 
-/** BRAND SWIPER */ 
+/** =============================== BRAND SWIPER ================================= */ 
 
 const topSwiper = new Swiper('.brand-swiper.top .swiper', {
   loop: true,
@@ -352,7 +365,7 @@ const bottomSwiper = new Swiper('.brand-swiper.bottom .swiper', {
   
 
 
-/** PRODUCT-INFO SWIPER*/ 
+/** =========================== PRODUCT-INFO SWIPER ============================ */ 
 document.addEventListener('DOMContentLoaded', () => {
   let leftSwiper = null;
   let rightSwiper = null;
@@ -444,7 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/** financial section */ 
+/** ============================= financial section ============================== */ 
 gsap.registerPlugin(ScrollTrigger);
 
 function animateCount(id, end, duration = 2000) {
@@ -495,7 +508,7 @@ document.querySelectorAll('.news-list li').forEach((li, i) => {
 
 /** ESG */
     
-/** FOOTER */ 
+/** ================================= FOOTER ================================== */ 
 document.addEventListener('DOMContentLoaded', function () {
   // 연락처 보기/닫기
   const contactBtn = document.querySelector('.contact-view');

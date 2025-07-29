@@ -646,50 +646,28 @@ body {
 .prod-img:hover .prod-overlay {opacity: 1;}
 
 @media (max-width: 700px) {
-  .product-section {
-    flex-direction: column;
-    height: auto;
-    padding: 0 2rem;
-  }
-
-  .product-section .left-swiper {
-    display: none;
-  }
-
-  .product-section .right-swiper {
-    display: block;
-    width: 100%;
-    height: auto;
-    padding-bottom: 10rem;
-  }
-
+  .product-section {flex-direction: column;height: auto;padding: 0 2rem;}
+  .product-section .left-swiper {display: none;}
+  .product-section .right-swiper {display: block;width: 100%;height: auto;padding-bottom: 10rem;}
   .product-section .right-swiper .swiper-wrapper {
-    display: flex;
-    flex-direction: row;
-    height: auto;
+    display: flex;flex-direction: row;height: auto;
   }
-
   .product-section .right-swiper .swiper-slide {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: auto;
+    display: flex;flex-direction: column;
+    width: 100%;height: auto;
   }
 
   /* ✅ 2x2 그리드 유지 (텍스트 포함) */
   .prod-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    padding: 4rem 2rem;
+    gap: 2rem;padding: 4rem 2rem;
   }
 
   .prod-text {
     grid-column: span 1;
-    display: flex;
-    flex-direction: column;
-    padding: 2.5rem;
-    text-align: center;
+    display: flex;flex-direction: column;
+    padding: 2.5rem;text-align: center;
   }
 
   .prod-img {
@@ -796,8 +774,7 @@ body {
 .financial-grid {
   position: absolute;z-index: 4;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: 20vh;
+  grid-template-columns: repeat(2, 1fr);grid-auto-rows: 20vh;
   gap: 2rem;width: 80vw;margin: 0 auto;
 }
 
@@ -805,8 +782,7 @@ body {
   display: flex;flex-direction: column;
   justify-content: center;align-items: center;
   background: rgba(0, 0, 0, 0.6);
-  padding: 3rem 2rem;
-  outline: 2rem solid #fff; border-radius: 1.2rem;
+  padding: 3rem 2rem;outline: 2rem solid #fff; border-radius: 1.2rem;
 }
 
 /* 두 번째 줄(총자산)만 전체 너비 차지 */
@@ -923,51 +899,38 @@ body {
   /* aspect-ratio: 3 / 4; */
   position: relative;display: flex;align-items: flex-end;
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-position: center;background-repeat: no-repeat;
   border-radius: 1.6rem;
-  overflow: hidden;
+  overflow: hidden;cursor: pointer;
   transition: all 0.4s ease;
-  cursor: pointer;
 }
 
 /* 어두운 오버레이 */
 .esg-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+  content: "";z-index: 1;
+  position: absolute;inset: 0;
   background: rgba(0, 0, 0, 0.6);
   transition: background 0.4s ease;
-  z-index: 1;
 }
 
 /* 콘텐츠 */
 .esg-card .content {
   position: relative;z-index: 2;
-  padding: 3rem;width: 100%;margin: 2rem;
-  color: #fff;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 1.5rem;
+  display: flex;flex-direction: column;justify-content: flex-end;
+  padding: 3rem;width: 100%;margin: 2rem;gap: 1.5rem;
+  color: #fff;text-align: left;
 }
 
 /* 제목은 항상 보임 */
 .esg-card h3 {
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1.2;
-  color: #fff;
+  font-size: 3rem;font-weight: 700;
+  line-height: 1.2;color: #fff;
 }
 
 /* 설명과 링크는 처음에 숨김 */
 .esg-card p,
 .esg-card .esg-link {
-  font-size: 2rem;
-  line-height: 1.6;
-  color: #fff;
-  opacity: 0;
+  font-size: 2rem;line-height: 1.6;color: #fff;opacity: 0;
   transform: translateY(1rem);
   transition: opacity 0.4s ease, transform 0.4s ease;
 }
@@ -975,37 +938,21 @@ body {
 /* 링크 스타일 */
 .esg-link {
   display: inline-block;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-top: 1rem;
-  text-decoration: underline;
+  font-size: 1.5rem;font-weight: 600;
+  margin-top: 1rem;text-decoration: underline;
 }
 
 /* Hover 시 카드 확장 + 내용 노출 */
-.esg-card:hover {
-  flex-grow: 1.2;
-}
-
-.esg-card:hover::before {
-  background: rgba(0, 0, 0, 0.1);
-}
-
+.esg-card:hover {flex-grow: 1.2;}
+.esg-card:hover::before {background: rgba(0, 0, 0, 0.1);}
 .esg-card:hover .esg-card h3 {font-size: 3.5rem;}
 
 .esg-card:hover p,
-.esg-card:hover .esg-link {
-  opacity: 1;
-  transform: translateY(0);
-}
+.esg-card:hover .esg-link {opacity: 1;transform: translateY(0);}
 
 @media (max-width: 1200px) { 
-  .esg-card {
-    height: 40vh;
-    display: flex;align-items: flex-end;
-  }
-  .esg-card .content {
-    padding: 1rem;margin: 1rem;gap: 1rem;
-  }
+  .esg-card {height: 40vh;display: flex;align-items: flex-end;}
+  .esg-card .content {padding: 1rem;margin: 1rem;gap: 1rem;}
   .esg-head {gap: 2rem;margin: 4rem;}
   .esg-card h3 {font-size: 2rem;}
   .esg-card p, 
@@ -1014,9 +961,7 @@ body {
 
 @media (max-width: 800px) {
   .esg-head {margin-bottom: 3rem;}
-  .esg-title {
-    font-size: 3rem;
-  }
+  .esg-title {font-size: 3rem;}
   .esg-desc {font-size: 1.5rem;line-height: 2.3rem;}
   .esg-card-wrapper {flex-direction: column; justify-content: center; gap: 3rem;}
 }
@@ -1116,10 +1061,7 @@ footer .container {margin: 0;}
   display: flex;flex-wrap: wrap;gap: 1.5rem;
   /* border: 1px solid red; */
 }
-.family-list li {
-  width: calc(100% / 4 - 1.8rem);
-  margin-bottom: 0.8rem;
-}
+.family-list li {width: calc(100% / 4 - 1.8rem);margin-bottom: 0.8rem;}
 
 .family-list a {
   color: #02164E;text-decoration: none;
