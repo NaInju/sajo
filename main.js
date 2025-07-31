@@ -173,24 +173,37 @@ document.addEventListener("DOMContentLoaded", function () {
     prevBtn.setAttribute('data-preview', slideData[prevIndex].name);
   }
 
-  /** 화면 너비에 따라 슬라이드 배경 이미지 교체 */
+  /** ✅ 화면 크기에 따라 슬라이드 배경 이미지 교체 */
   function updateSlideImages() {
-    const isMobile = window.innerWidth <= 700; // 모바일 기준 폭
-    const imgNames = [
-      'mainvisual_sajomall',
-      'mainvisual_sajosasimimall',
-      'mainvisual_sajogim',
-      'mainvisual_sajopet',
-      'mainvisual_sikjajaemall',
-    ];
+  const isMobile = window.innerWidth <= 700;
 
-    document.querySelectorAll('#main-visual-wrap .slide-card').forEach((card, i) => {
+  const imgNames = [
+    'mainvisual_1_sajomall',
+    'mainvisual_2_sajosasimimall',
+    'mainvisual_3_sajogim',
+    'mainvisual_4_sajopet',
+    'mainvisual_5_sikjajaemall',
+  ];
+
+  // 실제 슬라이드만 선택 (복제 제외)
+  const slideCards = document.querySelectorAll(
+    '.main-visual-inner .swiper-slide:not(.swiper-slide-duplicate) .slide-card'
+  );
+
+  slideCards.forEach((card) => {
+    const parentSlide = card.closest('.swiper-slide');
+    const index = parseInt(parentSlide.dataset.index, 10);
+
+    // index가 유효한지 확인 후 배경 이미지 설정
+    if (!isNaN(index) && imgNames[index]) {
       const imgPath = isMobile
-        ? `./img/main_visual/mobile/${imgNames[i]}_m.png`
-        : `./img/main_visual/${imgNames[i]}.png`;
+        ? `./img/main_visual/mobile/${imgNames[index]}_m.png`
+        : `./img/main_visual/${imgNames[index]}.png`;
+
       card.style.backgroundImage = `url('${imgPath}')`;
-    });
-  }
+    }
+  });
+}
 
   // 페이지 로드 & 리사이즈 시 이미지 교체 실행
   updateSlideImages();
